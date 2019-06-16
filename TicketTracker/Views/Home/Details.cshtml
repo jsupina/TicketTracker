@@ -1,0 +1,81 @@
+﻿@model TicketTracker.Models.Ticket
+
+<div>
+    <br />
+    <br />
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Date Submitted:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <br />
+
+        <dt>
+            Submitted By:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+
+        <br />
+
+        <dt>
+            Severity:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Severity)
+        </dd>
+
+        <br />
+
+        <dt>
+            Status:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <br />
+
+        <div style="word-break:break-word">
+            <dt>
+                Description:
+            </dt>
+            <div class="col-md-5">@Model.Description</div>
+        </div>
+
+    </dl>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<p>
+    @Html.ActionLink("Back to Home", "Index")
+</p>
+
+@if (User.IsInRole("Administrator"))
+{
+    using (Html.BeginForm())
+    {
+        <input id="id" name="id" type="hidden" value="@Model.Id" />
+        <input id="oid" name="oid" type="hidden" value="0" />
+        <input type="submit" value="Close Ticket" class="btn btn-default btn-danger" />
+    }
+}
+
+
+
+
+

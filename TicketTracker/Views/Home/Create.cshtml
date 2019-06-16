@@ -1,0 +1,68 @@
+﻿@model TicketTracker.Models.Ticket
+@using Microsoft.AspNet.Identity
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        <br />
+
+        <h1>New Ticket Submission</h1>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br />
+
+        <div class="row">
+            <div class="col-md-10">
+                Please give the ticket a short title:
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+
+            <div class="col-md-10">
+                How would you rate the severity of this issue?
+                    <select id="Severity" name="Severity" class="form-control">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-10">
+                Please provide a short description of the issue<br />
+                and what you were doing at the time:<br />
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "resize:none;width:790px", @rows = 10, @cols = 70 })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input id="Date" name="Date" type="hidden" value="@DateTime.Now" />
+        <input id="Status" name="Status" type="hidden" value="Open" />
+        <input id="User" name="User" type="hidden" value="@User.Identity.GetUserName()" />        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-10">
+                <input type="submit" value="Submit Ticket" class="btn btn-default" />
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
