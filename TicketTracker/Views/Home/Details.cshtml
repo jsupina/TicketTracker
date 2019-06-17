@@ -67,11 +67,14 @@
 
 @if (User.IsInRole("Administrator"))
 {
-    using (Html.BeginForm())
+    if (Model.Status.Equals("Closed") != true)
     {
-        <input id="id" name="id" type="hidden" value="@Model.Id" />
-        <input id="oid" name="oid" type="hidden" value="0" />
-        <input type="submit" value="Close Ticket" class="btn btn-default btn-danger" />
+        using (Html.BeginForm())
+        {
+            <input id="id" name="id" type="hidden" value="@Model.Id" />
+            <input id="oid" name="oid" type="hidden" value="0" />
+            <input type="submit" value="Close Ticket" class="btn btn-default btn-danger" />
+        }
     }
 }
 
