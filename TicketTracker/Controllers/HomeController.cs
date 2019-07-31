@@ -96,7 +96,7 @@ namespace TicketTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,Name,Severity,Status,User,Description")] Ticket ticket)
+        public ActionResult Create([ModelBinder(typeof(TicketModelBinder))]Ticket ticket)
         {
             if (ModelState.IsValid)
             {

@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using TicketTracker.Filters;
 
 namespace TicketTracker
 {
@@ -8,6 +9,7 @@ namespace TicketTracker
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new LogFilter());
         }
     }
 }

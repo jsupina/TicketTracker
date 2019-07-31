@@ -47,9 +47,7 @@
                 @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "resize:none;width:790px", @rows = 10, @cols = 70 })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
-        </div>
-        <input id="Date" name="Date" type="hidden" value="@DateTime.Now" />
-        <input id="Status" name="Status" type="hidden" value="Open" />
+        </div>>
         <input id="User" name="User" type="hidden" value="@User.Identity.GetUserName()" />        <br />
         <br />
         <div class="row">
